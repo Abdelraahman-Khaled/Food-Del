@@ -22,7 +22,6 @@ app.use(bodyParser.json());
 const corsOptions = {
   origin: '*', // Replace with your frontend domain
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  credentials: true, // If your app uses cookies or authentication
 };
 
 app.use(cors(corsOptions));
