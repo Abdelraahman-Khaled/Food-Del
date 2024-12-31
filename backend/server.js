@@ -52,7 +52,3 @@ app.use((err, req, res, next) => {
     .json({ message: "Internal Server Error", error: err.message });
 });
 
-// rung the server
-app.listen(port, () => {
-  console.log(`server is running  in port :${port}`);
-});
