@@ -1,0 +1,44 @@
+/* font */
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Outfit:wght@100..900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: Outfit;
+}
+body {
+  min-height: 100vh;
+  background-color: #fcfcfc;
+}
+hr{
+  border: none;
+  height: 1px;
+  background: #a9a9a9;
+}
+
+@media (max-width: 768px) {
+
+  .sidebar p{
+    display: none;
+  }
+}
+.sidebar .active {
+
+  background: #fff0ed;
+  border-color: tomato;
+}
+
+@media (max-width:600px) {
+  .list-table-format{
+    grid-template-columns: 1fr 3fr 1fr;
+    gap: 15px;
+  }
+  .list-table-format.title{
+    display: none;
+  }
+}
