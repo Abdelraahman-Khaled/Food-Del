@@ -19,7 +19,31 @@ const port = process.env.PORT || 4000; // 4000
 app.use(express.json());
 app.use(bodyParser.json());
 
-app.use(cors()); // make front and back conected with different ports
+const corsOptions = {
+  origin: 'https://food-del-pgpj.vercel.app', // Replace with your frontend domain
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  credentials: true, // If your app uses cookies or authentication
+};
+
+app.use(cors(corsOptions));
+
+// Handle preflight requests
+app.options('*', cors(corsOptions));
+export default function handler(req, res) {
+  // Add CORS headers
+  res.setHeader('Access-Control-Allow-Origin', 'https://food-del-pgpj.vercel.app');
+  res.setHeader('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+
+  // Handle preflight requests
+  if (req.method === 'OPTIONS') {
+    res.status(200).end();
+    return;
+  }
+
+  // Your API logic here
+  res.status(200).json({ message: 'Hello, world!' });
+}
 
 // db connection
 connectDB();
